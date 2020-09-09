@@ -61,11 +61,12 @@ class CalcController {
             
             } else if(isNaN(value)) {
             
-                console.log(value);
+                //console.log(value);
             
             } else {
             
                 this._operation.push(value);
+                console.log(this._operation);
             }
         } else {
             let newValue = this.getLastOperation().toString() + value.toString();
@@ -121,7 +122,7 @@ class CalcController {
             case '7':
             case '8':
             case '9':                
-                this.addOperation(parsInt(value));
+                this.addOperation(parseInt(value));
                 break;
 
             default: 
@@ -136,10 +137,10 @@ class CalcController {
 
         buttons.forEach((btn, index)=>{
             
-            this.addEventListenerAll(btn, 'click drag', e => {
+            this.addEventListenerAll(btn, "click drag", e => {
 
-                let text = btn.className.baseVal.replace("btn-", "");
-                this.execBtn();
+                let textBtn = btn.className.baseVal.replace("btn-", "");
+                this.execBtn(textBtn);
             });
 
             this.addEventListenerAll(btn, "mouseover mouseup mousedown", e => {
